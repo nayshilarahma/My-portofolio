@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2E2E2E;
+    background-color: #F4F4F9;
+}
+
+.navbar {
+    background-color: #3E497A;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: 600;
+}
+.navbar a:hover {
+    color: #F1D1B5;
+}
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #F1D1B5;
+}
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+.nav-links li {
+    margin-right: 1.5rem;
+}
+
+/* Container */
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Headers */
+h2 {
+    font-size: 2rem;
+    color: #3E497A;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: #F1D1B5;
+    display: block;
+    margin: 0.5rem auto 0;
+}
+
+/* About Section */
+#about {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 20px;
+    justify-content: center;
+    text-align: center;
+}
+.about-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 5px solid #F1D1B5;
+}
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Skills Section */
+.skills-container {
+    display: grid;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.skill {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #3E497A;
+}
+.skill-bar {
+    background-color: #EAEAEA;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 10px;
+}
+.skill-bar-fill {
+    background-color: #F1D1B5;
+    height: 10px;
+}
+
+/* Soft Skills Section */
+#soft-skills {
+    padding: 50px 0;
+    border-bottom: 1px solid #ddd;
+}
+.soft-skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.soft-skill {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    width: 45%;
+    text-align: center;
+}
+.soft-skill h3 {
+    margin-top: 0;
+    color: #3E497A;
+}
+.soft-skill p {
+    margin: 0;
+}
+
+/* Language Skills Section */
+#language-skills {
+    padding: 50px 0;
+    border-bottom: 1px solid #ddd;
+}
+.language-skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0 20px;
+}
+.language-skill {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.language-skill h3 {
+    margin-top: 0;
+    color: #3E497A;
+}
+.language-skill p {
+    margin: 0;
+    color: #7f8c8d;
+}
+
+/* Projects Section */
+.projects-container {
+    display: grid;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.project-item {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.project-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+.project-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.project-item h3 {
+    font-size: 1.5rem;
+    color: #3E497A;
+    margin-bottom: 0.5rem;
+}
+.project-item p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+/* Hobbies Section */
+.hobbies-container {
+    display: grid;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.hobby-item {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+.hobby-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #3E497A;
+}
+.hobby-item p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+}
+#contact p {
+    font-size: 1rem;
+    color: #3E497A;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#contact a.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #464646;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+#contact a.btn:hover {
+    background-color: #c7c7c7;
+}
+
+/* Footer */
+footer {
+    background-color: #3E497A;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.social-icons a {
+    color: #464646;
+    font-size: 2rem;
+    transition: color 0.3s, transform 0.3s;
+}
+.social-icons a:hover {
+    color: #c7c7c7;
+    transform: scale(1.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">My Portfolio</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="about-content">
+            <img src="img/akuui.jfif" alt="Your Photo" class="about-photo">
+            <p>I am a passionate software development student with a solid background in software engineering. I am excited to use my knowledge and keep improving my skills to build new and creative solutions.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <div class="skill-name">HTML & CSS</div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 30%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Laravel</div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Bootstrap</div>
+                <div class="skill-bar">
+                    <div class="skill-bar-fill" style="width: 50%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="soft-skills">
+        <h2>Soft Skills</h2>
+        <div class="soft-skills-container">
+            <div class="soft-skill">
+                <h3>Communication</h3>
+                <p>Effective at conveying ideas and collaborating with others.</p>
+            </div>
+            <div class="soft-skill">
+                <h3>Problem Solving</h3>
+                <p>Able to approach and resolve issues with creative solutions.</p>
+            </div>
+            <div class="soft-skill">
+                <h3>Teamwork</h3>
+                <p>Strong team player who thrives in a collaborative environment.</p>
+            </div>
+            <div class="soft-skill">
+                <h3>Time Management</h3>
+                <p>Proficient in managing tasks and meeting deadlines efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="language-skills">
+        <h2>Language Skills</h2>
+        <div class="language-skills-container">
+            <div class="language-skill">
+                <h3>Indonesian</h3>
+                <p>Intermediate</p>
+            </div>
+            <div class="language-skill">
+                <h3>English</h3>
+                <p>Intermediate</p>
+            </div>
+            <div class="language-skill">
+                <h3>Korean</h3>
+                <p>Basic</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-item">
+                <img src="img/bengkel.png" alt="Project 1">
+                <h3>Service Motor</h3>
+                <!-- <p>Description of Project 1...</p> -->
+            </div>
+            <div class="project-item">
+                <img src="img/pang.png" alt="Project 2">
+                <h3>Webtoon</h3>
+                <!-- <p>Description of Project 2...</p> -->
+            </div>
+            <!-- <div class="project-item">
+                <img src="img/blander.png" alt="Project 2">
+                <h3>3D Animation</h3>
+                <p>Description of Project 2...</p>
+            </div> -->
+            <div class="project-item">
+                <img src="img/rumah.png" alt="Project 2">
+                <h3>Administrasi Rumah Sakit</h3>
+                <!-- <p>Description of Project 2...</p> -->
+            </div>
+            <div class="project-item">
+                <img src="img/jam.png" alt="Project 2">
+                <h3>Jam Analog</h3>
+                <!-- <p>Description of Project 2...</p> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies">
+        <h2>Hobbies</h2>
+        <div class="hobbies-container">
+            <div class="hobby-item">
+                <h3>Makeup</h3>
+                <p>Exploring the world of makeup allows me to express creativity and experiment with different looks. Whether it's a bold style or a subtle touch, makeup is my way of enhancing beauty and artistry. Alongside this, I enjoy diving into films from classic cinema to modern blockbusters. </p>
+            </div>
+            <div class="hobby-item">
+                <h3>Watching Movies</h3>
+                <p>Watching films not only entertains me but also inspires my creativity and passion for storytelling through visuals. I love immersing myself in different genres and discovering new films.</p>
+            </div>
+            <div class="hobby-item">
+                <h3>Singing</h3>
+                <p>Singing is another passion of mine it's a way to express myself and connect with the music on a deeper level. From soulful ballads to upbeat tunes, music brings me joy and inspiration in everything I do.</p>
+            </div>
+            <div class="hobby-item">
+                <h3>Listening to Music</h3>
+                <p>Music has always been a huge part of my life. Whether it's discovering new tracks or revisiting old favorites, I love immersing myself in different genres and sounds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <h3>Get In Touch</h3>
+        <p>I'm always open to new opportunities and collaborations! Whether you have a question, a project in mind, or just want to connect, feel free to reach out. You can contact me via email or connect with me on GitHub and LinkedIn. I'm looking forward to hearing from you!
+        </p>
+        <div class="social-icons">
+            <a href="https://github.com/nayshilarahma"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/nayshilarah?igsh=emZlMHlsdDI3N25h"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:nayshilarahma22@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <a href="https://sg.docworkspace.com/d/sIDGw1rCJAq_h6rYG" class="btn">Download My CV</a>
+    </section>
+    <footer>
+        <p>&copy; 2024 My Portofolio. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

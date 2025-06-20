@@ -6,7 +6,7 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* General Styling */
+       
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -75,13 +75,13 @@
             text-align: center;
             padding: 1rem 0;
         }
-        /* Container */
+       
         .container {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-        /* Section Headers */
+        
         h2 {
             font-size: 2rem;
             color: #ffa888;
@@ -97,7 +97,7 @@
             display: block;
             margin: 0.5rem auto 0;
         }
-        /* About Section */
+       
         #about {
             display: flex;
             align-items: center;
@@ -118,7 +118,7 @@
             line-height: 1.6;
             max-width: 600px;
         }
-        /* Skills Section */
+       
         .skills-container {
             display: grid;
             padding-left: 20px;
@@ -148,7 +148,7 @@
             background-color: #55AD9B;
             height: 10px;
         }
-        /* Soft Skills Section */
+       
         #soft-skills {
             padding: 50px 0;
             border-bottom: 1px solid #ddd;
@@ -174,7 +174,7 @@
         .soft-skill p {
             margin: 0;
         }
-        /* Language Skills Section */
+       
         #language-skills {
             padding: 50px 0;
             border-bottom: 1px solid #ddd;
@@ -233,7 +233,7 @@
             font-size: 1rem;
             color: #7f8c8d;
         }
-        /* Hobbies Section */
+        
         .hobbies-container {
             display: grid;
             padding-left: 20px;
@@ -281,7 +281,7 @@
         #contact a.btn:hover {
             background-color: #c7c7c7;
         }
-        /* Footer */
+        
         footer {
             background-color: #55AD9B;
             color: #ffffff;
@@ -289,7 +289,7 @@
             padding: 1rem;
             margin-top: 3rem;
         }
-        /* Social Media Icons */
+        
         .social-icons {
             display: flex;
             justify-content: center;
@@ -308,10 +308,10 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Media Queries for Responsive Design */
+        
         @media (max-width: 768px) {
   .my-element {
-    /* Gaya khusus untuk layar lebih kecil dari 768px */
+    
     padding: 10px;
   }
 
@@ -332,7 +332,7 @@
         margin-bottom: 0.5rem;
     }
     
-    /* About Section */
+    
     #about {
         flex-direction: column;
         gap: 1rem;
@@ -343,35 +343,34 @@
         height: 120px;
     }
     
-    /* Skills Section */
+    
     .skills-container {
         grid-template-columns: 1fr;
         padding: 0;
     }
     
-    /* Soft Skills Section */
+    
     .soft-skill {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    /* Language Skills Section */
+   
     .language-skills-container {
         grid-template-columns: 1fr;
     }
 
-    /* Projects Section */
     .projects-container {
         grid-template-columns: 1fr;
     }
 
-    /* Hobbies Section */
+    
     .hobbies-container {
         grid-template-columns: 1fr;
     }
 }
 
-/* Adjustments for smaller screens */
+
 @media (max-width: 480px) {
     /* Navbar */
     .navbar a {
@@ -379,12 +378,12 @@
         margin-right: 0.5rem;
     }
     
-    /* Section Headers */
+   
     h2 {
         font-size: 1.5rem;
     }
 
-    /* General text size adjustments */
+   
     body, #about p, .skill-name, .soft-skill p, .language-skill p, .project-item p, .hobby-item p, #contact p {
         font-size: 0.9rem;
     }
@@ -395,8 +394,6 @@
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <!-- <a href="#" class="brand-logo">Portfolio
-            </a> -->
             <button class="navbar-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -422,25 +419,25 @@
             <div class="skill">
                 <div class="skill-name">HTML & CSS</div>
                 <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 30%;"></div>
+                    <div class="skill-bar-fill" style="width: 50%;"></div>
                 </div>
             </div>
             <div class="skill">
                 <div class="skill-name">JavaScript</div>
                 <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 40%;"></div>
+                    <div class="skill-bar-fill" style="width: 30%;"></div>
                 </div>
             </div>
             <div class="skill">
                 <div class="skill-name">Laravel</div>
                 <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 50%;"></div>
+                    <div class="skill-bar-fill" style="width: 70%;"></div>
                 </div>
             </div>
             <div class="skill">
                 <div class="skill-name">Bootstrap</div>
                 <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 30%;"></div>
+                    <div class="skill-bar-fill" style="width: 45%;"></div>
                 </div>
             </div>
         </div>
@@ -510,8 +507,8 @@
                 <!-- <p>Description of Project 2...</p> -->
             </div>
             <div class="project-item">
-                <img src="img/jam.png" alt="Project 2">
-                <h3>Jam Analog</h3>
+                <img src="img/kasir.png" alt="Project 2">
+                <h3>Kasir Sederhana</h3>
                 <!-- <p>Description of Project 2...</p> -->
             </div>
         </div>
@@ -542,14 +539,13 @@
     <section id="contact">
         <h2>Contact Me</h2>
         <h3>Get In Touch</h3>
-        <p>I'm always open to new opportunities and collaborations! Whether you have a question, a project in mind, or just want to connect, feel free to reach out. You can contact me via email or connect with me on GitHub and LinkedIn. I'm looking forward to hearing from you!
+        <p>I'm always open to new opportunities and collaborations! Whether you have a question, a project in mind, or just want to connect, feel free to reach out. You can contact me via Instagram or connect with me on GitHub and LinkedIn. I'm looking forward to hearing from you!
         </p>
         <div class="social-icons">
             <a href="https://github.com/nayshilarahma"><i class="fab fa-github"></i></a>
             <a href="https://www.instagram.com/nayshilarah?igsh=emZlMHlsdDI3N25h"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/nayshila-ramadhani-5385b5207"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <a href="https://sg.docworkspace.com/d/sICCw1rCJAomL77YG" class="btn">Download My CV</a>
     </section>
     <footer>
         <p>&copy; 2024 My Portofolio. All rights reserved.</p>

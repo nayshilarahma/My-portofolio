@@ -1,643 +1,816 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-       
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #2E2E2E;
-            background-color: #f8faf5;
-        }
-        .navbar {
-            background-color: #55AD9B;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-right: 1.5rem;
-            font-weight: 600;
-        }
-        .navbar a:hover {
-            color: #95D2B3;
-        }
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #F1D1B5;
-        }
-        .nav-links {
-            list-style-type: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-links li {
-            margin-right: 1.5rem;
-        }
-        .navbar-toggle {
-            display: none;
-            background-color: transparent;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #ffffff;
-        }
-        .navbar-toggle:focus {
-            outline: none;
-        }
-        .nav-links.active {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            background-color: #55AD9B;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-        }
-        .nav-links.active li {
-            margin-right: 0;
-            text-align: center;
-            padding: 1rem 0;
-        }
-       
-        .container {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            color: #ffa888;
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        h2::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background-color: #ffa888;
-            display: block;
-            margin: 0.5rem auto 0;
-        }
-       
-        #about {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 20px;
-            justify-content: center;
-            text-align: center;
-        }
-        .about-photo {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border: 5px solid #95D2B3;
-        }
-        #about p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-       
-        .skills-container {
-            display: grid;
-            padding-left: 20px;
-            padding-right: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .skill {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-        .skill-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #55AD9B;
-        }
-        .skill-bar {
-            background-color: #EAEAEA;
-            border-radius: 20px;
-            overflow: hidden;
-            height: 10px;
-        }
-        .skill-bar-fill {
-            background-color: #55AD9B;
-            height: 10px;
-        }
-       
-        #soft-skills {
-            padding: 50px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .soft-skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-        .soft-skill {
-            background-color: #ffffff;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            width: 45%;
-            text-align: center;
-        }
-        .soft-skill h3 {
-            margin-top: 0;
-            color: #3E497A;
-        }
-        .soft-skill p {
-            margin: 0;
-        }
-       
-        #language-skills {
-            padding: 50px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .language-skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            padding: 0 20px;
-        }
-        .language-skill {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .language-skill h3 {
-            margin-top: 0;
-            color: #3E497A;
-        }
-        .language-skill p {
-            margin: 0;
-            color: #7f8c8d;
-        }
-        /* Projects Section */
-        .projects-container {
-            display: grid;
-            padding-left: 20px;
-            padding-right: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .project-item {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        .project-item:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-        .project-item img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        .project-item h3 {
-            font-size: 1.5rem;
-            color: #3E497A;
-            margin-bottom: 0.5rem;
-        }
-        .project-item p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-        
-        .hobbies-container {
-            display: grid;
-            padding-left: 20px;
-            padding-right: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .hobby-item {
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .hobby-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #3E497A;
-        }
-        .hobby-item p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-        /* Contact Section */
-        #contact {
-            text-align: center;
-        }
-        #contact p {
-            font-size: 1rem;
-            color: #3E497A;
-            margin-top: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        #contact a.btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #464646;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-        #contact a.btn:hover {
-            background-color: #c7c7c7;
-        }
-        
-        footer {
-            background-color: #55AD9B;
-            color: #ffffff;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 3rem;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .social-icons a {
-            color: #464646;
-            font-size: 2rem;
-            transition: color 0.3s, transform 0.3s;
-        }
-        .social-icons a:hover {
-            color: #c7c7c7;
-            transform: scale(1.1);
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        @media (max-width: 768px) {
-  .my-element {
-    
-    padding: 10px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nayshila Portfolio</title>
 
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.5rem 1rem;
-    }
-    .navbar-brand {
-        font-size: 1.5rem;
-    }
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-    }
-    .nav-links li {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-    
-    
-    #about {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    .about-photo {
-        width: 120px;
-        height: 120px;
-    }
-    
-    
-    .skills-container {
-        grid-template-columns: 1fr;
-        padding: 0;
-    }
-    
-    
-    .soft-skill {
-        width: 100%;
-        margin-bottom: 1rem;
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-   
-    .language-skills-container {
-        grid-template-columns: 1fr;
+    :root{
+      --bg:#f8f7f4;
+      --primary:#7c9d96;
+      --secondary:#d7bfae;
+      --text:#2c2c2c;
+      --soft:#6f6f6f;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.05);
+      --radius:24px;
     }
 
-    .projects-container {
-        grid-template-columns: 1fr;
+    html{
+      scroll-behavior:smooth;
     }
 
-    
-    .hobbies-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 480px) {
-    /* Navbar */
-    .navbar a {
-        font-size: 1rem;
-        margin-right: 0.5rem;
-    }
-    
-   
-    h2 {
-        font-size: 1.5rem;
+    body{
+      font-family:'Outfit', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.7;
     }
 
-   
-    body, #about p, .skill-name, .soft-skill p, .language-skill p, .project-item p, .hobby-item p, #contact p {
-        font-size: 0.9rem;
+    body::before{
+      content:"";
+      position:fixed;
+      width:300px;
+      height:300px;
+      background:rgba(124,157,150,0.15);
+      border-radius:50%;
+      top:-100px;
+      right:-100px;
+      filter:blur(90px);
+      z-index:-1;
     }
-}
 
-    </style>
+    body::after{
+      content:"";
+      position:fixed;
+      width:300px;
+      height:300px;
+      background:rgba(215,191,174,0.18);
+      border-radius:50%;
+      bottom:-100px;
+      left:-100px;
+      filter:blur(90px);
+      z-index:-1;
+    }
+
+    .container{
+      width:min(1150px,90%);
+      margin:auto;
+    }
+
+    section{
+      padding:5rem 0;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(12px);
+      background:rgba(248,247,244,0.7);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1rem 0;
+    }
+
+    .logo{
+      font-family:'Playfair Display', serif;
+      font-size:1.8rem;
+      text-decoration:none;
+      color:var(--primary);
+      font-weight:700;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:2rem;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      transition:0.3s;
+      position:relative;
+      font-size:0.95rem;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      width:0;
+      height:2px;
+      background:var(--primary);
+      left:0;
+      bottom:-4px;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .menu-btn{
+      display:none;
+      border:none;
+      background:none;
+      font-size:1.4rem;
+      cursor:pointer;
+      color:var(--text);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:4rem;
+      align-items:center;
+    }
+
+    .hero-text span{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--primary);
+      font-size:0.9rem;
+    }
+
+    .hero-text h1{
+      font-family:'Playfair Display', serif;
+      font-size:4rem;
+      line-height:1.1;
+      margin:1rem 0;
+    }
+
+    .hero-text p{
+      color:var(--soft);
+      max-width:520px;
+      margin-bottom:2rem;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:0.9rem 1.5rem;
+      border-radius:999px;
+      text-decoration:none;
+      transition:0.3s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      font-size:0.95rem;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(0,0,0,0.08);
+      background:white;
+      color:var(--text);
+    }
+
+    .btn-outline:hover{
+      background:var(--secondary);
+      color:white;
+    }
+
+    .hero-image{
+      display:flex;
+      justify-content:center;
+    }
+
+    /* FOTO PROFILE 9:16 */
+    .hero-image img{
+      width: 100%;
+      max-width: 300px; 
+      aspect-ratio: 9 / 16; 
+      object-fit:cover;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      border:8px solid rgba(255,255,255,0.5);
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:3rem;
+    }
+
+    .section-title span{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--primary);
+      font-size:0.9rem;
+    }
+
+    .section-title h2{
+      font-family:'Playfair Display', serif;
+      font-size:2.7rem;
+      margin-top:0.5rem;
+    }
+
+    /* GRID */
+
+    .grid{
+      display:grid;
+      gap:1.5rem;
+    }
+
+    /* CARD */
+
+    .card{
+      background:rgba(255,255,255,0.7);
+      backdrop-filter:blur(10px);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:1.5rem;
+      transition:0.3s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    /* SKILLS */
+
+    .skills-grid{
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    }
+
+    .skill-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:0.8rem;
+      font-weight:500;
+    }
+
+    .progress{
+      width:100%;
+      height:10px;
+      background:#ececec;
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .progress span{
+      display:block;
+      height:100%;
+      background:linear-gradient(to right,var(--primary),#aac7c1);
+      border-radius:999px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    }
+
+    .project-card{
+      overflow:hidden;
+      padding:0;
+      text-decoration: none; 
+      color: inherit; 
+      display: block; 
+    }
+
+    .project-card img{
+      width:100%;
+      height: auto;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .project-card:hover img{
+      transform:scale(1.05);
+    }
+
+    /* UKURAN WEB DEVELOPMENT 16:9 */
+    .web-card img {
+      aspect-ratio: 16 / 9;
+    }
+
+    /* UKURAN GRAPHIC DESIGN 9:16 */
+    .graphic-card img {
+      aspect-ratio: 9 / 16;
+    }
+
+    /* KHUSUS CARD TANPA GAMBAR AGAR TEKS DI TENGAH */
+    .project-card.no-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 9 / 16;
+    }
+
+    .project-content{
+      padding:1.5rem;
+    }
+
+    .sub-title{
+      font-family:'Playfair Display', serif;
+      font-size:2rem;
+      color:var(--primary);
+      margin-bottom:2rem;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      text-align:center;
+      padding:3rem;
+    }
+
+    .contact-box p{
+      max-width:650px;
+      margin:1rem auto 2rem;
+      color:var(--soft);
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .socials a{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:white;
+      color:var(--text);
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      transition:0.3s ease;
+      font-size:1.2rem;
+    }
+
+    .socials a:hover{
+      background:var(--primary);
+      color:white;
+      transform:translateY(-4px);
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem 0;
+      border-top:1px solid rgba(0,0,0,0.05);
+      color:var(--soft);
+      font-size:0.95rem;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .hero-content{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text p{
+        margin:auto auto 2rem;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .hero-image img{
+        max-width: 280px;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .menu-btn{
+        display:block;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:5%;
+        background:white;
+        flex-direction:column;
+        padding:1.5rem;
+        border-radius:20px;
+        box-shadow:var(--shadow);
+        opacity:0;
+        pointer-events:none;
+        transition:0.3s;
+      }
+
+      .nav-links.active{
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+    }
+
+    @media(max-width:500px){
+
+      .hero-text h1{
+        font-size:2.3rem;
+      }
+
+      .section-title h2{
+        font-size:1.7rem;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <button class="navbar-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links"type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <section id="about">
-        <div class="about-content">
-            <img src="img/akuui.jfif" alt="Your Photo" class="about-photo">
-            <p>
-                Hi! I’m currently a freshman at Universitas Bina Sarana Informatika (UBSI) Sukabumi, 
-                majoring in Information Systems. As a first-year student, I’m excited to start my journey 
-                in the world of technology. I enjoy learning new things, exploring software development, 
-                and growing step by step to become better each day.
-            </p>
-     </div>
-    </section>
+  <!-- NAVBAR -->
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill">
-                <div class="skill-name">Canva</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 80%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">HTML & CSS</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 60%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">JavaScript</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 20%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Laravel</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 65%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Python</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 20%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Bootstrap</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 30%;"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Figma</div>
-                <div class="skill-bar">
-                    <div class="skill-bar-fill" style="width: 50%;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <nav class="navbar">
+    <div class="container nav-content">
 
-    <section id="soft-skills">
-        <h2>Soft Skills</h2>
-        <div class="soft-skills-container">
-            <div class="soft-skill">
-                <h3>Communication</h3>
-                <p>Effective at conveying ideas and collaborating with others.</p>
-            </div>
-            <div class="soft-skill">
-                <h3>Creativity</h3>
-                <p>Thinking outside the box and coming up with innovative solutions to challenges.</p>
-            </div>
-            <div class="soft-skill">
-                <h3>Teamwork</h3>
-                <p>Strong team player who thrives in a collaborative environment.</p>
-            </div>
-            <div class="soft-skill">
-                <h3>Time Management</h3>
-                <p>Proficient in managing tasks and meeting deadlines efficiently.</p>
-            </div>
-        </div>
-    </section>
+      <a href="#" class="logo">Nayshila.</a>
 
-    <section id="language-skills">
-        <h2>Language Skills</h2>
-        <div class="language-skills-container">
-            <div class="language-skill">
-                <h3>Indonesian</h3>
-                <p>Intermediate</p>
-            </div>
-            <div class="language-skill">
-                <h3>English</h3>
-                <p>Intermediate</p>
-            </div>
-            <div class="language-skill">
-                <h3>Korean</h3>
-                <p>Basic</p>
-            </div>
-        </div>
-    </section>
+      <button class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
-            <div class="project-item">
-                <img src="img/bengkel.png" alt="Project 1">
-                <h3>Service Motor</h3>
-            </div>
-            <div class="project-item">
-                <img src="img/pang.png" alt="Project 2">
-                <h3>Webtoon</h3>
-            </div>
-            <div class="project-item">
-                <img src="img/rumah.png" alt="Project 3">
-                <h3>Administrasi Rumah Sakit</h3>
-            </div>
-            <div class="project-item">
-                <img src="img/kasir.png" alt="Project 4">
-                <h3>Kasir Sederhana</h3>
-            </div>
-            <div class="project-item">
-                <img src="img/toko minuman.png" alt="Project 5">
-                <h3>Toko Minuman Sederhana</h3>
-            </div>
-            <div class="project-item">
-                <img src="img/gaji karyawan.png" alt="Project 6">
-                <h3>Gaji Karyawan</h3>
-            </div>
-        </div>
-    </section>
-    
-    <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="projects-container">
-
-        <div class="project-item">
-            <img src="img/inovindo.jpg" alt="PKL Certificate">
-            <h3>Vocational Internship (PKL)</h3>
-            <p>SMKN 2 Sukabumi – Software Engineering (RPL)</p>
-        </div>
-
-        <div class="project-item">
-            <img src="img/webinar.jpg" alt="Certificate of Participation – International Webinar">
-            <h3>Certificate of Participation – International Webinar</h3>
-            <p>Digitech University (Master Program Innovation Management)</p>
-        </div>
-
-        <div class="project-item">
-            <img src="img/ormik.jpg" alt="Orientasi Akademik">
-            <h3>Orientasi Akademik </h3>
-            <p>Universitas Bina Sarana Informatika</p>
-        </div>
-
-        <div class="project-item">
-            <img src="img/semot.jpg" alt="Seminar Motivasi (Semot)">
-            <h3>Seminar Motivasi (Semot)</h3>
-            <p>Universitas Bina Sarana Informatika</p>
-        </div>
-
-         <div class="project-item">
-            <img src="img/entre.jpg" alt="Seminar Wajib Entrepreneur">
-            <h3>Seminar Wajib Entrepreneur</h3>
-            <p>Universitas Bina Sarana Informatika</p>
-        </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
     </div>
-</section>
+  </nav>
 
+  <!-- HERO -->
 
+  <section class="hero" id="about">
 
-    <section id="hobbies">
-    <h2>Hobbies</h2>
-    <div class="hobbies-container">
-        <div class="hobby-item">
-            <h3>Learning Languages</h3>
-            <p>
-                I like exploring new languages such as Korean and English. 
-                It’s fun to understand different cultures through language learning.
-            </p>
-        </div>
-        <div class="hobby-item">
-            <h3>Watching Movies & Dramas</h3>
-            <p>
-                Watching movies and Korean dramas is one of my favorite ways to relax and find inspiration. 
-                I enjoy exploring different genres and storytelling styles.
-            </p>
-        </div>
-        <div class="hobby-item">
-            <h3>Exploring Technology</h3>
-            <p>
-                As a student in Information Systems, I like experimenting with new apps, tools, and coding challenges. 
-                It motivates me to improve my technical skills continuously.
-            </p>
-        </div>
-        <div class="hobby-item">
-            <h3>Listening to Music</h3>
-            <p>
-                Music always accompanies me in my daily life. It boosts my mood, helps me focus, 
-                and inspires me during study sessions or creative work.
-            </p>
-        </div>
-        <div class="hobby-item">
-            <h3>Photo & Video Editing</h3>
-            <p>
-                I enjoy editing photos and videos using simple tools such as Canva 
-                to create clean and visually appealing content.
-            </p>
-        </div>
-    </div>
-</section>
+    <div class="container hero-content">
 
+      <div class="hero-text">
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <h3>Get In Touch</h3>
-        <p>I'm always open to new opportunities and collaborations! Whether you have a question, a project in mind, or just want to connect, feel free to reach out. You can contact me via Instagram or connect with me on GitHub and LinkedIn. I'm looking forward to hearing from you!
+        <span>Information Systems Student & Graphic Designer</span>
+
+        <h1>
+          Crafting Beautiful Digital Experiences Through Design and Code.
+        </h1>
+
+        <p>
+          Hi! I’m Nayshila Rahma Ramadhani, a freshman at Universitas Bina Sarana Informatika (UBSI) Sukabumi majoring in Information Systems. 
+          I enjoy exploring graphic design, web development, and creative digital projects while continuously learning and growing in technology.
         </p>
-        <div class="social-icons">
-            <a href="https://github.com/nayshilarahma"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/nayshilarah?igsh=emZlMHlsdDI3N25h"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/nayshila-ramadhani-5385b5207"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-    </section>
-    <footer>
-        <p>&copy; 2024 My Portofolio. All rights reserved.</p>
-    </footer>
-    <script>
-        document.querySelector('.navbar-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
-    
-</body>
 
+        <div class="hero-buttons">
+
+          <a href="#projects" class="btn btn-primary">
+            <i class="fas fa-arrow-right"></i>
+            View Projects
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+            Contact Me
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+        <img src="img/gwe.jpeg" alt="Profile Photo">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+        <span>Skills</span>
+        <h2>What I Can Do</h2>
+      </div>
+
+      <div class="grid skills-grid">
+
+        <div class="card">
+          <div class="skill-top">
+            <p>Canva</p>
+            <span>90%</span>
+          </div>
+          <div class="progress">
+            <span style="width:90%"></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="skill-top">
+            <p>HTML & CSS</p>
+            <span>75%</span>
+          </div>
+          <div class="progress">
+            <span style="width:75%"></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="skill-top">
+            <p>Laravel</p>
+            <span>70%</span>
+          </div>
+          <div class="progress">
+            <span style="width:70%"></span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="skill-top">
+            <p>Figma</p>
+            <span>65%</span>
+          </div>
+          <div class="progress">
+            <span style="width:65%"></span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title">
+        <span>Portfolio</span>
+        <h2>My Projects</h2>
+      </div>
+
+      <!-- WEB DEVELOPMENT (UKURAN 16:9) -->
+
+      <div style="margin-bottom:5rem;">
+
+        <h3 class="sub-title">Web Development</h3>
+
+        <div class="grid projects-grid">
+
+          <a href="#" class="card project-card web-card">
+            <img src="img/bengkel.png">
+            <div class="project-content">
+              <h3>Service Motor</h3>
+              <p>Workshop management website with service features.</p>
+            </div>
+          </a>
+
+          <a href="#" class="card project-card web-card">
+            <img src="img/pang.png">
+            <div class="project-content">
+              <h3>Webtoon Website</h3>
+              <p>Comic reading platform with interactive interface.</p>
+            </div>
+          </a>
+
+          <a href="#" class="card project-card web-card">
+            <img src="img/rumah.png">
+            <div class="project-content">
+              <h3>Hospital Administration</h3>
+              <p>Simple administration system for hospital management.</p>
+            </div>
+          </a>
+
+          <a href="#" class="card project-card web-card">
+            <img src="img/kasir.png">
+            <div class="project-content">
+              <h3>Simple Cashier</h3>
+              <p>Cashier application for transaction management.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- GRAPHIC DESIGN (UKURAN 9:16) -->
+
+      <div>
+
+        <h3 class="sub-title">Graphic Design (CV. INFOSMI Media - Intern)</h3>
+
+        <div class="grid projects-grid">
+
+          <!-- 1. Sukabumi_ -->
+          <a href="sukabumi.html" class="card project-card graphic-card">
+            <img src="img/sukabumi_.png">
+            <div class="project-content">
+              <h3>Sukabumi_</h3>
+              <p>Creative digital and lifestyle media content designs.</p>
+            </div>
+          </a>
+
+          <!-- 2. Sukabumi Today -->
+          <a href="sukabumitoday.html" class="card project-card graphic-card">
+            <img src="img/sukabumitoday.png">
+            <div class="project-content">
+              <h3>Sukabumi Today</h3>
+              <p>News and update promotional visual designs.</p>
+            </div>
+          </a>
+
+          <!-- 3. Event Sukabumi -->
+          <a href="eventsukabumi.html" class="card project-card graphic-card">
+            <img src="img/eventsukabumi.png">
+            <div class="project-content">
+              <h3>Event Sukabumi</h3>
+              <p>Visual designs for event promotions and updates.</p>
+            </div>
+          </a>
+
+          <!-- 4. Infosmi Live -->
+          <a href="infosmilive.html" class="card project-card graphic-card">
+            <img src="img/infosmilive.png">
+            <div class="project-content">
+              <h3>Infosmi Live</h3>
+              <p>Event promotional and social media designs.</p>
+            </div>
+          </a>
+
+          <!-- 5. Sukabumi Foodies -->
+          <a href="sukabumifoodies.html" class="card project-card graphic-card">
+            <img src="img/sukabumifoodies.png">
+            <div class="project-content">
+              <h3>Sukabumi Foodies</h3>
+              <p>Culinary photography branding and promotional designs.</p>
+            </div>
+          </a>
+
+          <!-- 6. Cianjur Foodies -->
+          <a href="cianjurfoodies.html" class="card project-card graphic-card">
+            <img src="img/cianjurfoodies.png">
+            <div class="project-content">
+              <h3>Cianjur Foodies</h3>
+              <p>Culinary review branding and aesthetic visual contents.</p>
+            </div>
+          </a>
+
+          <!-- 7. Sukabumi Foodnote -->
+          <a href="sukabumifoodnote.html" class="card project-card graphic-card">
+            <img src="img/sukabumifoodnote.png">
+            <div class="project-content">
+              <h3>Sukabumi Foodnote</h3>
+              <p>Creative culinary guide and recommendation designs.</p>
+            </div>
+          </a>
+
+          <!-- 8. Gang Makmoer -->
+          <a href="gangmakmoer.html" class="card project-card graphic-card">
+            <img src="img/gm.png">
+            <div class="project-content">
+              <h3>Gang Makmoer</h3>
+              <p>Food branding and promotional visual designs.</p>
+            </div>
+          </a>
+
+          <!-- 9. Homecare Sukabumi -->
+          <a href="homecaresukabumi.html" class="card project-card graphic-card no-cover">
+            <div class="project-content">
+              <h3>Homecare Sukabumi</h3>
+              <p>Creative medical-themed social media designs.</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="card contact-box">
+
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>Let’s Connect</h2>
+        </div>
+
+        <p>
+          I’m open to learning opportunities, collaborations, and creative projects. Feel free to connect with me through social media.
+        </p>
+
+        <div class="socials">
+
+          <a href="https://github.com/nayshilarahma" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="https://instagram.com/nayshilarah" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+
+          <a href="https://linkedin.com" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Nayshila Portfolio.
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+  </script>
+
+</body>
 </html>
